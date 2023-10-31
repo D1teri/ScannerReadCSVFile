@@ -8,6 +8,9 @@ import java.io.FileNotFoundException;
 public class ScannerReadCSVFile
 {
     public void run() throws FileNotFoundException {
+        //Initial title
+        System.out.println("Class: Avg score");
+        
         // Mr. Jaffe's code to read data from a file
         // Instantiate a File object
         File dataFile = new File("TestScoresByClass.csv");
@@ -23,8 +26,8 @@ public class ScannerReadCSVFile
         while (scanner.hasNext()) {
             // Read the next line of the file
             String line = scanner.nextLine();
-            System.out.println(line);
-
+            Scanner scan = new Scanner(line);
+            scan.useDelimiter(",");
             // line now contains a line of comma-separated numbers
             // representing 10 test scores for each class.
             //
@@ -47,9 +50,24 @@ public class ScannerReadCSVFile
             //
             // Write your code in the space below!
             
+            //prepering veriables for average calculations
             
+            int values = 0;
+            int sum = 0;
+            int avg = 0;
             
-            
+            while(scan.hasNextInt()){
+                int num = scan.nextInt();
+                if(num > 101){
+                    System.out.print(num + ": ");
+                }
+                else{
+                    sum += scan.nextInt();
+                    values++;
+                }
+            }
+            avg = sum / values;
+            System.out.println(avg);
         }
     }
 
