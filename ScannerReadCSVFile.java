@@ -25,7 +25,7 @@ public class ScannerReadCSVFile
         // Continue while there's still data in the file to be read
         while (scanner.hasNext()) {
             // Read the next line of the file
-            String line = scanner.nextLine();
+            String line = scanner.nextLine() + ",";
             Scanner scan = new Scanner(line);
             scan.useDelimiter(",");
             // line now contains a line of comma-separated numbers
@@ -55,19 +55,21 @@ public class ScannerReadCSVFile
             int values = 0;
             int sum = 0;
             int avg = 0;
-            
-            while(scan.hasNextInt()){
-                int num = scan.nextInt();
-                if(num > 101){
-                    System.out.print(num + ": ");
+            if(scan.hasNextInt()){
+                while(scan.hasNextInt()){
+                    int num = scan.nextInt();
+                    if(num > 101){
+                        System.out.print(num + ": ");
+                    }
+                    else{
+                        sum += scan.nextInt();
+                        values++;
+                    }
                 }
-                else{
-                    sum += scan.nextInt();
-                    values++;
-                }
+                avg = sum / values;
+                System.out.println(avg);
+                scanner.useDelimiter("\n");
             }
-            avg = sum / values;
-            System.out.println(avg);
         }
     }
 
