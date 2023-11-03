@@ -62,7 +62,7 @@ public class ScannerReadCSVFile
                         System.out.print(num + ": ");
                     }
                     else{
-                        sum += scan.nextInt();
+                        sum += num;
                         values++;
                     }
                 }
